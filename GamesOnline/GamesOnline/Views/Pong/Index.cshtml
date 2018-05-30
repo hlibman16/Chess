@@ -10,38 +10,29 @@
 
 
 <script>
-    window.requestAnimFrame = (function () {
-        return window.requestAnimationFrame ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame ||
-            window.oRequestAnimationFrame ||
-            window.msRequestAnimationFrame ||
-            function (callback) {
-                return window.setTimeout(callback, 1000 / 60);
-            };
-    })();
 
-    var player = document.getElementsByClassName('player');
-    var arena = document.getElementById('arena');
-    var x = 0;
-    
+    var context;
+    var x = 100;
+    var y = 200;
+    var dx = 5;
+    var dy = 5;
+    function init() {
+        context = arena.getContext('2d');
+        setInterval(draw, 10);
+    }
 
-    $(document).ready(function () {
-        $(document).keydown(function (key) {
-            switch (parseInt(key.which, 10)) {
-                //up
-                case 38:
-                    if (x > 0) { $(player).css("top", "-=10"); x -= 10;}
-                    break;
-                //down
-                case 40:
-                    if (x < 335) { $(player).css("top", "+=10"); x += 10; }
-                    break;
-            }
-        });
-    });
-
-    
+    function draw() {
+        context.clearRect(0, 0, 700, 300);
+        context.beginPath();
+        context.fillStyle = "#0000ff";
+        context.arc(x, y, 20, 0, Math.PI * 2, true);
+        context.closePath();
+        context.fill();
+        if (x < 0 || x > 700) dx = -dx;
+        if (y < 0 || y > 300) dy = -dy;
+        x += dx;
+        y += dy;
+    }
 
 
 </script>
@@ -50,20 +41,10 @@
 <style>
     body, html {
         margin: 0px;
-
     }
+
     .arenaContainer {
         display: block;
-    }
-
-    #arena {
-        position:absolute;
-        background-image: url(../../FX/Arena.png);
-        background-size: 100% 100%;
-        margin: 0px;
-        width: 500px;
-        height: 400px;
-        overflow: hidden;
     }
 
     #score {
@@ -73,71 +54,34 @@
         top: 5%;
         transform: translate(-50%, 0%);
     }
-
-    .player {
-   
-        position: absolute;
-        max-height: inherit;
-        z-index: 1000;
-        background-image: url(../../FX/player.png);
-        height: 65px;
-        width: 10px;
-    }
-
-    .opponent {
-        position:absoulte;
-        max-height: inherit;
-        z-index: 1000;
-        background-image: url(../../FX/player.png);
-        height: 65px;
-        width: 10px;
-    }
-
-    .ball {
-        background-image: url(../../FX/Ball.png);
-    }
-
-    #player {
-        position: absolute;
-        right: 90%;
-    }
-
-    #opponent {
-        position: absolute;
-        left: 90%
-    }
-
-    #ball {
-
-        width: 85px;
-        height: 85px;
-    }
 </style>
 
+<body onload="init();">
 
-
-    <div id="arena">
+    <canvas id="arena" width="700" height="300">
         <div id="score">
             <h1>
                 <span id="playerScore">0</span>
                 <span id="opponentScore">0</span>
             </h1>
         </div>
+    </canvas>
+</body>
 
-        <div id="player" class="player"></div>
-        <div id="opponent" class="opponent"></div>
-        <div id="ball" class="ball"></div>
-
-        <!-- left side player controls-->
-        <div id="controls-left">
-            <div id="up"></div>
-            <div id="down"></div>
-        </div>
-        <!-- right side player controls -->
-        <div id="controls-right">
-            <div id="left"></div>
-            <div id="right"></div>
-        </div>
-
-    </div>
-
+@{ /*     $(document).ready(function () {
+            $(document).keydown(function (key) {
+                switch (parseInt(key.which, 10)) {
+                    //up
+                    case 38:
+                        if (x > 0) { $(player).css("top", "-=10"); x -= 10;}
+                        break;
+                    //down
+                    case 40:
+                        if (x < 335) { $(player).css("top", "+=10"); x += 10; }
+                        break;
+                }
+            });
+        });
+        
+    */
+}
