@@ -86,7 +86,6 @@ C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\bin\M
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\bin\Microsoft.AI.Web.xml
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.csprojAssemblyReference.cache
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.csproj.CoreCompileInputs.cache
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.csproj.CopyComplete
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.dll
