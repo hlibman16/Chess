@@ -3,7 +3,9 @@
 }
 
 <head>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 </head>
 
 
@@ -15,15 +17,15 @@
         $(document).keydown(function (key) {
             switch (parseInt(key.which, 10)) {
                 case 38:
-                    $(player).animate({ top: "-=10px" }, 'ease');
+                    $(player).css("top", "-=10");
                     break;
-
                 case 40:
-                    $(player).animate({ top: "+=10px" }, 'ease');
+                    $(player).css("top", "+=10");
                     break;
             }
         });
     });
+
   
 </script>
 

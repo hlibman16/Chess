@@ -90,3 +90,4 @@ C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\D
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.csproj.CopyComplete
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.dll
 C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.pdb
+C:\Users\mike.maniatis\Documents\GamesOnline\Chess\GamesOnline\GamesOnline\obj\Debug\GamesOnline.csprojAssemblyReference.cache
