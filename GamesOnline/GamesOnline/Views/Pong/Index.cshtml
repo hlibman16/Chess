@@ -11,29 +11,41 @@
 
 <script>
 
-    var context;
+    var ballContext;
+    var rectContext
     var x = 100;
     var y = 200;
     var dx = 5;
     var dy = 5;
+
     function init() {
-        context = arena.getContext('2d');
-        setInterval(draw, 10);
+        ballContext = arena.getContext('2d');
+        setInterval(drawBall, 10);
     }
 
-    function draw() {
-        context.clearRect(0, 0, 700, 300);
-        context.beginPath();
-        context.fillStyle = "#0000ff";
-        context.arc(x, y, 20, 0, Math.PI * 2, true);
-        context.closePath();
-        context.fill();
-        if (x < 0 || x > 700) dx = -dx;
-        if (y < 0 || y > 300) dy = -dy;
+    function playerInit() {
+        rectContext = arena.getContext('2d');
+        drawPaddles();
+        
+    }
+
+    function drawBall() {
+        ballContext.clearRect(0, 0, 700, 300);
+        ballContext.beginPath();
+        ballContext.fillStyle = "#0000ff";
+        ballContext.arc(x, y, 20, 0, Math.PI * 2, true);
+        ballContext.closePath();
+        ballContext.fill();
+        if (x < 24 || x > 700-24) dx = -dx;
+        if (y < 24 || y > 300-24) dy = -dy;
         x += dx;
         y += dy;
     }
 
+    function drawPaddles() {
+        rectContext.rect(10, 10, 10, 10);
+        rectContext.stroke();
+    }
 
 </script>
 
@@ -56,7 +68,7 @@
     }
 </style>
 
-<body onload="init();">
+<body onload="init(); playerInit(); ">
 
     <canvas id="arena" width="700" height="300">
         <div id="score">
