@@ -10,38 +10,59 @@
 
 
 <script>
-    
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                return window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+
     var player = document.getElementsByClassName('player');
+    var arena = document.getElementById('arena');
+    var x = 0;
+    
 
     $(document).ready(function () {
         $(document).keydown(function (key) {
             switch (parseInt(key.which, 10)) {
+                //up
                 case 38:
-                    $(player).css("top", "-=10");
+                    if (x > 0) { $(player).css("top", "-=10"); x -= 10;}
                     break;
+                //down
                 case 40:
-                    $(player).css("top", "+=10");
+                    if (x < 335) { $(player).css("top", "+=10"); x += 10; }
                     break;
             }
         });
     });
 
-  
+    
+
+
 </script>
 
 
 <style>
-    body {
+    body, html {
         margin: 0px;
-        height: 100%;
+
+    }
+    .arenaContainer {
+        display: block;
     }
 
     #arena {
+        position:absolute;
         background-image: url(../../FX/Arena.png);
         background-size: 100% 100%;
         margin: 0px;
-        width:100%;
-        height:600px;
+        width: 500px;
+        height: 400px;
         overflow: hidden;
     }
 
@@ -54,55 +75,57 @@
     }
 
     .player {
-        z-index: 10000;
+   
+        position: absolute;
+        max-height: inherit;
+        z-index: 1000;
         background-image: url(../../FX/player.png);
-        height:65px;
-        width:10px;
+        height: 65px;
+        width: 10px;
     }
 
-    .opponent{
-        z-index:1000;
+    .opponent {
+        position:absoulte;
+        max-height: inherit;
+        z-index: 1000;
         background-image: url(../../FX/player.png);
-        height:65px;
-        width:10px;
+        height: 65px;
+        width: 10px;
     }
-    
+
     .ball {
         background-image: url(../../FX/Ball.png);
     }
 
     #player {
         position: absolute;
-        right:80%;
-        
+        right: 90%;
     }
 
     #opponent {
         position: absolute;
-        left:80%
+        left: 90%
     }
 
     #ball {
-        position: absolute;
+
         width: 85px;
         height: 85px;
-        
     }
-
 </style>
 
 
 
-<div id="arena">
-    <div id="score">
-        <h1>
-            <span id="playerScore">0</span>
-            <span id="opponentScore">0</span>
-        </h1>
-    </div>
+    <div id="arena">
+        <div id="score">
+            <h1>
+                <span id="playerScore">0</span>
+                <span id="opponentScore">0</span>
+            </h1>
+        </div>
 
-        <div id="player" class="player">5</div>
-        <div id="opponent" class="opponent">5</div>
+        <div id="player" class="player"></div>
+        <div id="opponent" class="opponent"></div>
         <div id="ball" class="ball"></div>
 
         <!-- left side player controls-->
@@ -115,5 +138,6 @@
             <div id="left"></div>
             <div id="right"></div>
         </div>
-    
-</div>
+
+    </div>
+
